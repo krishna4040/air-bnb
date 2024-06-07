@@ -5,13 +5,13 @@ import { Link } from 'expo-router'
 
 const Page = () => {
 
-  const {signOut, isSignedIn} = useAuth()
+  const { signOut, isSignedIn } = useAuth()
 
   return (
     <View>
       <Button title='Log-out' onPress={() => signOut()} />
       {
-        !isSignedIn && 
+        !isSignedIn &&
         <Link href={'/(tabs)/(modals)/login'}>
           <Text>Login</Text>
         </Link>

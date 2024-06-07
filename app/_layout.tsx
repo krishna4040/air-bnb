@@ -7,9 +7,9 @@ import { useEffect } from 'react';
 import { useColorScheme } from '@/components/useColorScheme';
 import { TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { env } from '@/env';
 import * as SecureStore from 'expo-secure-store'
 import { ClerkProvider, useAuth } from '@clerk/clerk-expo';
+import { useWarmUpBrowser } from '@/hooks/useWarmUpBrowser';
 export { ErrorBoundary } from 'expo-router';
 
 const tokenCache = {
@@ -53,9 +53,11 @@ function RootLayoutNav() {
 
   useEffect(() => {
     if (isLoaded && !isSignedIn) {
-      router.push("/login")
+      router.push("/(tabs)/(modals)/login")
     }
-  },[])
+  },[isLoaded])
+
+  useWarmUpBrowser()
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
