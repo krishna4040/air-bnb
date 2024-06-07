@@ -1,11 +1,19 @@
 import React from 'react'
 import { Tabs } from 'expo-router'
-import {FontAwesome, FontAwesome5, MaterialCommunityIcons, Ionicons} from '@expo/vector-icons'
+import { FontAwesome, FontAwesome5, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons'
+import Colors from '@/constants/Colors'
 
 const TabLayout = () => {
   return (
-    <Tabs>
-      <Tabs.Screen 
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: Colors.primary,
+        tabBarLabelStyle: {
+          // fontSize: 'mono-sb'
+        }
+      }}
+    >
+      <Tabs.Screen
         name='index'
         options={{
           tabBarLabel: 'Explore',
@@ -17,7 +25,7 @@ const TabLayout = () => {
         name='wishlist'
         options={{
           tabBarLabel: 'Wishlist',
-          tabBarIcon: (icon) => <FontAwesome name='heart' color={icon.color} size={icon.size} />
+          tabBarIcon: (icon) => <Ionicons name='heart-outline' color={icon.color} size={icon.size} />
         }}
       />
 

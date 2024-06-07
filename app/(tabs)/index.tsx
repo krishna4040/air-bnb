@@ -2,6 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { Link } from 'expo-router'
 
+// Explore page
 const Page = () => {
   return (
     <View>

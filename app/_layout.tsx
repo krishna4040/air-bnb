@@ -66,7 +66,7 @@ function RootLayoutNav() {
           presentation: 'modal',
           headerLeft: () => (
             <TouchableOpacity onPress={() => router.back()}>
-              <Ionicons name='close-outline' />
+              <Ionicons name='close-outline' size={28} />
             </TouchableOpacity>
           )
         }} />
@@ -81,7 +81,7 @@ function RootLayoutNav() {
             animation: 'fade',
             headerLeft: () => (
               <TouchableOpacity onPress={() => router.back()}>
-                <Ionicons name='close-outline' />
+                <Ionicons name='close-outline' size={28} />
               </TouchableOpacity>
             )
           }}
