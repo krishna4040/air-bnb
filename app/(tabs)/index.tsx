@@ -4,7 +4,10 @@ import { Link, Stack } from 'expo-router'
 import { ExploreHeader } from '@/components/ui/ExploreHeader'
 import Listings from '@/components/ui/Listings'
 import ListingsData from '@/assets/data/airbnb-listings.json'
-import { Listing } from '@/assets/data/interface'
+import ListingsMapData from '@/assets/data/airbnb-listings.geo.json'
+import { Listing, LocationList } from '@/assets/data/interface'
+import ListingsMapView from '@/components/ui/ListingsMapView'
+import ListingBottomSheet from '@/components/ui/ListingBottomSheet'
 
 // Explore page
 const Page = () => {
@@ -15,13 +18,14 @@ const Page = () => {
   }
 
   return (
-    <View className='flex-1'>
+    <View className='flex-1 mt-[80px]'>
       <Stack.Screen
         options={{
           header: () => <ExploreHeader onCategoryChanged={onDataChanged} />
         }}
       />
-      <Listings category={category} listings={ListingsData as Listing[]} />
+      <ListingBottomSheet category={category} listings={ListingsData as Listing[]}/>
+      <ListingsMapView listings={ListingsMapData as LocationList} />
     </View>
   )
 }

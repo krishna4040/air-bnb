@@ -4,15 +4,26 @@ import { Link } from 'expo-router'
 import { Listing } from '@/assets/data/interface'
 import { Ionicons } from '@expo/vector-icons'
 import Animated, { FadeInRight, FadeOutLeft } from 'react-native-reanimated'
+import { BottomSheetFlatList, BottomSheetFlatListMethods } from '@gorhom/bottom-sheet'
 
 interface Props {
     listings: Listing[]
     category: string
+    refresh: number
 }
 
-const Listings = ({ category, listings }: Props) => {
-    const listRef = useRef<FlatList>(null)
+const Listings = ({ category, listings, refresh }: Props) => {
+    const listRef = useRef<BottomSheetFlatListMethods>(null)
     const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        if (refresh) {
+            listRef.current?.scrollToOffset({
+                offset: 0,
+                animated: true
+            })
+        }
+    }, [refresh])
 
     useEffect(() => {
         setLoading(true)
@@ -53,10 +64,15 @@ const Listings = ({ category, listings }: Props) => {
 
     return (
         <View>
-            <FlatList
+            <BottomSheetFlatList
                 data={loading ? [] : listings}
                 ref={listRef}
                 renderItem={renderRow}
+                ListHeaderComponent={
+                    <Text className='text-center mt-1'>
+                        {listings.length}
+                    </Text>
+                }
             />
         </View>
     )
