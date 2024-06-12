@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { Link, Stack } from 'expo-router'
 import { ExploreHeader } from '@/components/ui/ExploreHeader'
 import Listings from '@/components/ui/Listings'
+import ListingsData from '@/assets/data/airbnb-listings.json'
+import { Listing } from '@/assets/data/interface'
 
 // Explore page
 const Page = () => {
@@ -19,7 +21,7 @@ const Page = () => {
           header: () => <ExploreHeader onCategoryChanged={onDataChanged} />
         }}
       />
-      <Listings category={category} listings={[]} />
+      <Listings category={category} listings={ListingsData as Listing[]} />
     </View>
   )
 }

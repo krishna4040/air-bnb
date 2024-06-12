@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'expo-router'
 import { Listing } from '@/assets/data/interface'
 import { Ionicons } from '@expo/vector-icons'
-import Animated, { FadeInRight, FadeOut, FadeOutLeft } from 'react-native-reanimated'
+import Animated, { FadeInRight, FadeOutLeft } from 'react-native-reanimated'
 
 interface Props {
     listings: Listing[]
